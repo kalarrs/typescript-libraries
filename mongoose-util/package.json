@@ -1,0 +1,9 @@
+{
+  "name": "@kalarrs/mongoose-util",
+  "version": "1.0.0",
+  "description": "Mongoose utility methods",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.js",
+  "repository": "https://github.com/kalarrs/typescript-libraries/mongoose-util",
+  "license": "MIT"
+}
