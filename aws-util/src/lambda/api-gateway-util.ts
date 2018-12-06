@@ -16,24 +16,21 @@ interface ApiBinaryResponse<T> {
   headers?: apiGatewayHeaders;
 }
 
-export interface ApiBody<T, M = Meta> {
+export interface ApiBody<T, M = object | null> {
   data: T;
   meta?: M;
 }
 
-export interface ApiErrorsBody<T, M = Meta> {
+export interface ApiErrorsBody<T, M = object | null> {
   error: T;
   meta?: M;
-}
-
-export interface Meta {
 }
 
 type options = {
   headers?: apiGatewayHeaders;
 };
 
-export class ApiGatewayResponse {
+export class ApiGatewayUtil {
   private _headers: apiGatewayHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true,
@@ -44,19 +41,19 @@ export class ApiGatewayResponse {
     if (headers) this._headers = headers;
   }
 
-  apiResponseJson<T>({statusCode = 200, body = null, headers = this._headers}: ApiJsonResponse<T>): APIGatewayProxyResult {
+  sendJson<T>({statusCode = 200, body = null, headers = this._headers}: ApiJsonResponse<T>): APIGatewayProxyResult {
     return {
       statusCode,
-      body: body ? JSON.stringify(body) : "",
+      body: body ? JSON.stringify(body) : '',
       headers
     };
   }
 
-  apiResponseBinary<T>({statusCode = 200, body = null, headers = this._headers}: ApiBinaryResponse<T>): APIGatewayProxyResult {
+  sendBinary<T>({statusCode = 200, body = null, headers = this._headers}: ApiBinaryResponse<T>): APIGatewayProxyResult {
     return {
       isBase64Encoded: true,
       statusCode,
-      body: body.toString('base64'),
+      body: body ? body.toString('base64') : '',
       headers
     };
   }
