@@ -4,10 +4,15 @@
   "description": "AWS specific types and utility code that isn't found in AWS-SDK",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc"
+  },
+  "files": "dist",
   "repository": "https://github.com/kalarrs/typescript-libraries/aws-util",
   "license": "MIT",
   "devDependencies": {
     "@types/aws-lambda": "^8.10.15",
-    "@types/node": "^10.12.12"
+    "@types/node": "^10.12.12",
+    "typescript": "^3.2.1"
   }
 }

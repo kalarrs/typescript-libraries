@@ -4,6 +4,10 @@
   "description": "Mongoose utility methods",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
+  "files": "dist",
   "repository": "https://github.com/kalarrs/typescript-libraries/mongoose-util",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.2.1"
+  }
 }
