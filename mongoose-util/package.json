@@ -4,7 +4,9 @@
   "description": "Mongoose utility methods",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
-  "files": "dist",
+  "files": [
+    "dist"
+  ],
   "repository": "https://github.com/kalarrs/typescript-libraries/mongoose-util",
   "license": "MIT",
   "devDependencies": {
