@@ -30,7 +30,7 @@ type options = {
   headers?: apiGatewayHeaders;
 };
 
-export class ApiGatewayResponse {
+export class ApiGatewayUtil {
   private _headers: apiGatewayHeaders = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true,
@@ -41,7 +41,7 @@ export class ApiGatewayResponse {
     if (headers) this._headers = headers;
   }
 
-  apiResponseJson<T>({statusCode = 200, body = null, headers = this._headers}: ApiJsonResponse<T>): APIGatewayProxyResult {
+  sendJson<T>({statusCode = 200, body = null, headers = this._headers}: ApiJsonResponse<T>): APIGatewayProxyResult {
     return {
       statusCode,
       body: body ? JSON.stringify(body) : '',
@@ -49,7 +49,7 @@ export class ApiGatewayResponse {
     };
   }
 
-  apiResponseBinary<T>({statusCode = 200, body = null, headers = this._headers}: ApiBinaryResponse<T>): APIGatewayProxyResult {
+  sendBinary<T>({statusCode = 200, body = null, headers = this._headers}: ApiBinaryResponse<T>): APIGatewayProxyResult {
     return {
       isBase64Encoded: true,
       statusCode,
