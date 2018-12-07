@@ -4,6 +4,10 @@
   "description": "Mongoose utility methods",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "tsc"
+  },
   "files": [
     "dist"
   ],
