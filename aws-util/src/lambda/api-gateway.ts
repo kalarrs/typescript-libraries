@@ -4,4 +4,3 @@ export type ApiGatewayHandler = (
   event: APIGatewayEvent,
   context: Context
 ) => Promise<APIGatewayProxyResult>;
-
