@@ -16,6 +16,12 @@ interface ApiBinaryResponse<T> {
   headers?: apiGatewayHeaders;
 }
 
+interface ApiStringResponse<T> {
+  statusCode?: number;
+  body?: string | null;
+  headers?: apiGatewayHeaders;
+}
+
 export interface ApiBody<T, M = object | null> {
   data: T;
   meta?: M;
@@ -51,10 +57,10 @@ export class ApiGatewayUtil {
     };
   }
 
-  sendXml<T>({statusCode = 200, body = null, headers = this._headers}: ApiJsonResponse<T>): APIGatewayProxyResult {
+  sendXml<T>({statusCode = 200, body = null, headers = this._headers}: ApiStringResponse<T>): APIGatewayProxyResult {
     return {
       statusCode,
-      body: body && body.toString ? body.toString() : typeof body === 'string' ? body : '',
+      body: body && body.toString ? body.toString() as string : typeof body === 'string' ? body : '',
       headers: {
         'Content-Type': 'application/xml',
         ...headers
