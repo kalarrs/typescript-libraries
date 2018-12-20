@@ -62,7 +62,6 @@ export class ApiGatewayUtil {
     };
   }
 
-
   sendBinary<T>({statusCode = 200, body = null, headers = this._headers}: ApiBinaryResponse<T>): APIGatewayProxyResult {
     return {
       isBase64Encoded: true,
