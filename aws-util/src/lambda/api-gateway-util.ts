@@ -33,8 +33,7 @@ type options = {
 export class ApiGatewayUtil {
   private _headers: apiGatewayHeaders = {
     'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true,
-    'Content-Type': 'application/json'
+    'Access-Control-Allow-Credentials': true
   };
 
   constructor({headers}: options = {}) {
@@ -45,7 +44,21 @@ export class ApiGatewayUtil {
     return {
       statusCode,
       body: body ? JSON.stringify(body) : '',
-      headers
+      headers: {
+        'Content-Type': 'application/json',
+        ...headers
+      }
+    };
+  }
+
+  sendXml<T>({statusCode = 200, body = null, headers = this._headers}: ApiJsonResponse<T>): APIGatewayProxyResult {
+    return {
+      statusCode,
+      body: body && body.toString ? body.toString() : typeof body === 'string' ? body : '',
+      headers: {
+        'Content-Type': 'application/xml',
+        ...headers
+      }
     };
   }
 
@@ -53,7 +66,7 @@ export class ApiGatewayUtil {
     return {
       isBase64Encoded: true,
       statusCode,
-      body: body ? body.toString('base64') : '',
+      body: body && body.toString ? body.toString('base64') : typeof body === 'string' ? body : '',
       headers
     };
   }
