@@ -1,6 +1,6 @@
 {
   "name": "@kalarrs/aws-util",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "AWS specific types and utility code that isn't found in AWS-SDK",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
